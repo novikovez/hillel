@@ -12,13 +12,6 @@ $user_data = [
     "phone" => "0935555555",
 ];
 
-$register_user = new UserRepository(new MySql());
-$result['Registration User'] = $register_user->registerUser($user_data);
+$register_user = new UserRepository(new MySql(), new EmailService(), new SMSService());
 
-$send_email = new EmailService();
-$result['Email Send'] = $send_email->sendWelcomeEmail($user_data['email']);
-
-$send_sms = new SMSService();
-$result['SMS Send'] = $send_sms->sendSMS($user_data['phone']);
-
-dd($result);
+dd($register_user->registerUser($user_data));

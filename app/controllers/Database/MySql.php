@@ -2,9 +2,9 @@
 
 namespace App\Controllers\Database;
 
-use App\Interfaces\ConnectInterface;
+use App\Interfaces\DatabaseInterface;
 
-class MySql implements ConnectInterface
+class MySql implements DatabaseInterface
 {
 
     public function connect(): array

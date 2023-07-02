@@ -2,22 +2,28 @@
 
 namespace App\Controllers\User;
 
-use App\Interfaces\ConnectInterface;
+use App\Controllers\User\Notification\EmailService;
+use App\Controllers\User\Notification\SMSService;
+use App\Interfaces\DatabaseInterface;
 
-class UserRepository
+
+readonly class UserRepository
 {
 
-    protected ConnectInterface $db;
-
     public function __construct(
-        ConnectInterface $connect,
+        private DatabaseInterface $database,
+        private EmailService      $emailService,
+        private SMSService        $smsService,
     )
     {
-        $this->db = $connect;
     }
 
-    public function registerUser($userData): bool
+    public function registerUser($userData): array
     {
-        return $this->db->insert('users', $userData);
+        $result['Registration User'] = $this->database->insert('users', $userData);
+        $result['Email Send'] = $this->emailService->sendWelcomeEmail($userData['email']);
+        $result['SMS Send'] = $this->smsService->sendSMS($userData['phone']);
+        return $result;
     }
+
 }

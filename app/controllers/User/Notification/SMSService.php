@@ -2,7 +2,9 @@
 
 namespace App\Controllers\User\Notification;
 
-class SMSService
+use App\Interfaces\SMSServiceInterfaces;
+
+class SMSService implements SMSServiceInterfaces
 {
     public function sendSMS($phone): string
     {

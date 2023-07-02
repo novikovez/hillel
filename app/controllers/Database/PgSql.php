@@ -2,9 +2,9 @@
 
 namespace App\Controllers\Database;
 
-use App\Interfaces\ConnectInterface;
+use App\Interfaces\DatabaseInterface;
 
-class PgSql implements ConnectInterface
+class PgSql implements DatabaseInterface
 {
 
     public function connect(): array

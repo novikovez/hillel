@@ -2,7 +2,7 @@
 
 namespace App\Interfaces;
 
-interface ConnectInterface
+interface DatabaseInterface
 {
     public function connect(): array;
 

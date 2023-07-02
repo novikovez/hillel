@@ -2,8 +2,11 @@
 
 namespace App\Controllers\User\Notification;
 
-class EmailService
+use App\Interfaces\EmailServiceInterfaces;
+
+class EmailService implements EmailServiceInterfaces
 {
+
     public function sendWelcomeEmail($email): string
     {
         return 'Відправив листа на ' . $email;
