@@ -2,18 +2,17 @@
 
 namespace App\Controllers\User;
 
-use App\Controllers\User\Notification\EmailService;
-use App\Controllers\User\Notification\SMSService;
 use App\Interfaces\DatabaseInterface;
-
+use App\Interfaces\EmailServiceInterfaces;
+use App\Interfaces\SMSServiceInterfaces;
 
 readonly class UserRepository
 {
 
     public function __construct(
-        private DatabaseInterface $database,
-        private EmailService      $emailService,
-        private SMSService        $smsService,
+        private DatabaseInterface      $database,
+        private EmailServiceInterfaces $emailService,
+        private SMSServiceInterfaces   $smsService,
     )
     {
     }
